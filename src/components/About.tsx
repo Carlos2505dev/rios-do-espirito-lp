@@ -4,7 +4,9 @@ const About = () => {
   return (
     <section id="sobre" aria-labelledby="about-title" className="bg-rvl-creme-bg py-20 md:py-28 px-6">
       <div className="max-w-5xl mx-auto">
-        <h2 id="about-title" className="text-rvl-escuro mb-6 whitespace-nowrap">O QUE É A CONFERÊNCIA RIOS DO ESPÍRITO?</h2>
+        <h2 id="about-title" className="text-rvl-escuro mb-6 whitespace-normal md:whitespace-nowrap">
+          O QUE É A CONFERÊNCIA RIOS DO<br className="block md:hidden" /> ESPÍRITO?
+        </h2>
         <div className="font-blauer text-rvl-escuro/80 text-base md:text-lg max-w-4xl leading-relaxed mb-14 space-y-5">
           <p>
             A Conferência Rios do Espírito não é um marco no calendário, é um fluxo que seguimos. Há sete anos, nos reunimos para mergulhar no que Deus está gerando agora. Em 2026, nossa direção é clara: <span className="text-rvl-laranja">"Por onde o rio passar, tudo viverá"</span> (Ezequiel 47:9).          </p>
@@ -20,7 +22,7 @@ const About = () => {
           ].map((item, i) => (
             <article key={i} className="servico-card group text-left">
               <div className="icone-box">
-                <span className="font-aeonik text-7xl md:text-8xl text-rvl-laranja/30 group-hover:text-rvl-laranja transition-colors duration-300 leading-none inline-block">
+                <span className="font-aeonik text-7xl md:text-8xl text-rvl-laranja/70 group-hover:text-rvl-laranja transition-colors duration-300 leading-none inline-block">
                   {item.id}
                 </span>
               </div>

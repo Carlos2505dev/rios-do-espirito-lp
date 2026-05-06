@@ -35,6 +35,8 @@ const Hero = () => {
         <img
           src="/assets/Logo  Horizontal Branca.svg"
           alt="Conferência Rios do Espírito Logo"
+          width={490}
+          height={180}
           fetchPriority="high"
           className="w-[300px] sm:w-[306px] md:w-[380px] lg:w-[420px] xl:w-[490px] max-w-[90vw] max-h-[42vh] object-contain relative z-0 mb-6 sm:mb-8 md:mb-10 xl:mb-12"
         />
@@ -64,19 +66,19 @@ const Hero = () => {
 
       {/* Marquee Banner */}
       <div className="absolute bottom-0 left-0 right-0 z-20">
-        <div className="absolute bottom-0 left-0 right-0 h-[36px] md:h-[44px] bg-white overflow-hidden flex items-center z-20 pointer-events-none text-[#E8622A] font-aeonik font-semibold uppercase text-[11px] md:text-[13px]">
+        <div className="absolute bottom-0 left-0 right-0 h-[36px] md:h-[44px] bg-white overflow-hidden flex items-center z-20 pointer-events-none text-[#B5440A] font-aeonik font-semibold uppercase text-[11px] md:text-[13px]">
           <div className="flex whitespace-nowrap animate-marquee">
             {[1, 2, 3].map((i) => (
               <span key={i} className="flex">
-                <span className="whitespace-nowrap">AVIVAMENTO<span className="mx-3 text-[#E8622A]">·</span></span>
-                <span className="whitespace-nowrap">RENDIÇÃO<span className="mx-3 text-[#E8622A]">·</span></span>
-                <span className="whitespace-nowrap">EXCELÊNCIA<span className="mx-3 text-[#E8622A]">·</span></span>
-                <span className="whitespace-nowrap">SALVADOR<span className="mx-3 text-[#E8622A]">·</span></span>
-                <span className="whitespace-nowrap">NORDESTE DO BRASIL<span className="mx-3 text-[#E8622A]">·</span></span>
-                <span className="whitespace-nowrap">VERBO DA VIDA CABULA<span className="mx-3 text-[#E8622A]">·</span></span>
-                <span className="whitespace-nowrap">CONFERÊNCIA<span className="mx-3 text-[#E8622A]">·</span></span>
-                <span className="whitespace-nowrap">18.06.2026<span className="mx-3 text-[#E8622A]">·</span></span>
-                <span className="whitespace-nowrap">CRE26'<span className="mx-3 text-[#E8622A]">·</span></span>
+                <span className="whitespace-nowrap">AVIVAMENTO<span className="mx-3 text-[#B5440A]">·</span></span>
+                <span className="whitespace-nowrap">RENDIÇÃO<span className="mx-3 text-[#B5440A]">·</span></span>
+                <span className="whitespace-nowrap">EXCELÊNCIA<span className="mx-3 text-[#B5440A]">·</span></span>
+                <span className="whitespace-nowrap">SALVADOR<span className="mx-3 text-[#B5440A]">·</span></span>
+                <span className="whitespace-nowrap">NORDESTE DO BRASIL<span className="mx-3 text-[#B5440A]">·</span></span>
+                <span className="whitespace-nowrap">VERBO DA VIDA CABULA<span className="mx-3 text-[#B5440A]">·</span></span>
+                <span className="whitespace-nowrap">CONFERÊNCIA<span className="mx-3 text-[#B5440A]">·</span></span>
+                <span className="whitespace-nowrap">18.06.2026<span className="mx-3 text-[#B5440A]">·</span></span>
+                <span className="whitespace-nowrap">CRE26'<span className="mx-3 text-[#B5440A]">·</span></span>
               </span>
             ))}
           </div>

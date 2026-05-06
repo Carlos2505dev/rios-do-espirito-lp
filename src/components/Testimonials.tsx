@@ -5,7 +5,7 @@ const Testimonials = () => {
     <section className="bg-rvl-creme-bg py-20 md:py-28 px-6">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-rvl-escuro mb-2">Testemunhos</h2>
-        <p className="font-blauer text-rvl-escuro/60 mb-12">A prova do mover de Deus não está apenas no que sentimos, mas no que levamos para casa. Ao longo das edições, colecionamos histórias de quem decidiu mergulhar e viu a fidelidade de Deus transformar suas realidades. Por onde esse rio tem passado, a vida tem brotado.</p>
+        <p className="font-blauer text-rvl-escuro/80 mb-12">A prova do mover de Deus não está apenas no que sentimos, mas no que levamos para casa. Ao longo das edições, colecionamos histórias de quem decidiu mergulhar e viu a fidelidade de Deus transformar suas realidades. Por onde esse rio tem passado, a vida tem brotado.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center max-w-5xl mx-auto">
 

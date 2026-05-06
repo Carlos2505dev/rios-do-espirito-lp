@@ -14,7 +14,7 @@ const FAQ = () => {
     <section className="bg-rvl-creme-bg py-20 md:py-28 px-6">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
-          <p className="text-rvl-laranja font-medium mb-2 uppercase tracking-wider text-sm font-aeonik">FAQ</p>
+          <p className="text-[#B5440A] font-medium mb-2 uppercase tracking-wider text-sm font-aeonik">FAQ</p>
           <h2 className="text-rvl-escuro tracking-wide">PERGUNTAS FREQUENTES</h2>
         </div>
         <div className="bg-white rounded-2xl shadow-sm px-6 md:px-10 py-4 space-y-4">

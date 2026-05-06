@@ -29,7 +29,7 @@ const Programacao = () => {
         <div className="mb-14 md:mb-20">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-rvl-laranja"></div>
-            <span className="text-rvl-laranja font-aeonik font-bold tracking-[0.2em] text-[10px] md:text-xs uppercase">
+            <span className="text-rvl-laranja font-aeonik font-bold tracking-[0.2em] text-[11px] md:text-xs uppercase">
               CRE 2026
             </span>
           </div>
@@ -40,7 +40,7 @@ const Programacao = () => {
 
         {/* Placeholder Message */}
         <div className="flex flex-col items-center justify-center py-10 text-center">
-          <p className="font-aeonik text-xl md:text-2xl text-rvl-escuro/60 font-medium italic tracking-wide">
+          <p className="font-aeonik text-xl md:text-2xl text-rvl-escuro/80 font-medium italic tracking-wide">
             Em breve será lançada a programação
           </p>
           <div className="mt-6 w-12 h-[2px] bg-rvl-laranja/30"></div>

@@ -5,11 +5,11 @@ const Footer = () => {
   return (
     <footer className="bg-rvl-escuro py-16 px-6">
       <div className="max-w-5xl mx-auto text-center">
-        <div className="flex justify-center items-center gap-6 mb-8 flex-wrap">
-          <img src="/assets/Logo CRE Branco.svg" alt="Conferência Rios do Espírito Logo" loading="lazy" className="h-10 opacity-90" />
-          <div className="hidden sm:block w-px h-12 bg-white/20"></div>
-          <img src="/assets/Logo-Verbo.webp" alt="Verbo da Vida Logo" loading="lazy" className="h-16 opacity-90 object-contain" />
-          <img src="/assets/selo_verbo.webp" alt="Selo Verbo" loading="lazy" className="h-10 opacity-90 object-contain" />
+        <div className="flex justify-center items-center gap-4 sm:gap-6 mb-8">
+          <img src="/assets/Logo CRE Branco.svg" alt="Conferência Rios do Espírito Logo" width={150} height={40} loading="lazy" className="h-7 sm:h-10 opacity-90 object-contain" />
+          <div className="w-px h-8 sm:h-12 bg-white/20"></div>
+          <img src="/assets/Logo-Verbo.webp" alt="Verbo da Vida Logo" width={180} height={64} loading="lazy" className="h-10 sm:h-16 opacity-90 object-contain" />
+          <img src="/assets/selo_verbo.webp" alt="Selo Verbo" width={80} height={80} loading="lazy" className="h-8 sm:h-10 opacity-90 object-contain" />
         </div>
         <p className="font-blauer text-sm text-white mb-6">18 e 20 de Junho de 2026 — Verbo da Vida Cabula, Salvador/BA</p>
         <div className="flex justify-center gap-6 mb-8">

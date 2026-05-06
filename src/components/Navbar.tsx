@@ -1,6 +1,6 @@
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { useState, useEffect } from "react";
-import { StaggeredMenu } from "./ui/StaggeredMenu";
+import { useState, useEffect, Suspense, lazy } from "react";
+const StaggeredMenu = lazy(() => import("./ui/StaggeredMenu").then(m => ({ default: m.StaggeredMenu })));
 import { CheckCheck } from "lucide-react";
 
 declare global {
@@ -112,6 +112,7 @@ const Navbar = () => {
                         {/* Logo */}
                         <div className="flex items-center shrink-0">
                             <a
+                                href="/"
                                 className="flex items-center gap-2 h-8 cursor-pointer"
                                 onClick={(e) => {
                                     e.preventDefault();
@@ -120,6 +121,8 @@ const Navbar = () => {
                             >
                                 <img
                                     alt="Logo CRE"
+                                    width={120}
+                                    height={32}
                                     className="h-full w-auto object-contain"
                                     src="/assets/Logo CRE Branco.svg"
                                 />
@@ -131,6 +134,7 @@ const Navbar = () => {
                             {menuItems.map((item) => (
                                 <a
                                     key={item.name}
+                                    href={item.href}
                                     className="text-white hover:text-orange-500 text-sm font-aeonik font-bold tracking-widest transition-colors whitespace-nowrap cursor-pointer"
                                     onClick={(e) => {
                                         e.preventDefault();
@@ -169,6 +173,7 @@ const Navbar = () => {
                     transition={{ duration: 0.35, ease: "easeInOut" }}
                     className="fixed top-0 left-0 w-full z-50 px-0"
                 >
+                <Suspense fallback={<div className="h-16" />}>
                     <StaggeredMenu
                         isFixed={true}
                         items={staggeredItems}
@@ -177,6 +182,7 @@ const Navbar = () => {
                         onMenuOpen={() => setIsMenuOpen(true)}
                         onMenuClose={() => setIsMenuOpen(false)}
                     />
+                </Suspense>
                 </motion.div>
             </div>
         </>

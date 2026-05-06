@@ -4,7 +4,7 @@
 
 ---
 
-![Rios do Espírito - Landing Page](./public/assets/hero_section.jpg)
+![Rios do Espírito - Landing Page](public/assets/hero_section.jpg)
 
 *Uma plataforma digital completa que apresenta, promove e vende a experiência Rios do Espírito*
 

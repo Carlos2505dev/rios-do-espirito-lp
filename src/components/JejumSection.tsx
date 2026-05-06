@@ -9,7 +9,7 @@ const JejumSection = () => {
         <div className="text-center md:text-left">
           <p className="text-rvl-laranja font-aeonik font-medium uppercase tracking-widest text-xs mb-2">Pré-Conferência</p>
           <h2 className="text-rvl-creme">40 DIAS DE JEJUM</h2>
-          <p className="font-blauer text-rvl-creme/50 text-sm mt-2 max-w-md leading-relaxed">Um tempo coletivo de alinhamento espiritual antes do encontro. Faça parte.</p>
+          <p className="font-blauer text-rvl-creme/80 text-sm mt-2 max-w-md leading-relaxed">Um tempo coletivo de alinhamento espiritual antes do encontro. Faça parte.</p>
         </div>
         <div className="flex flex-col sm:flex-row items-center gap-3 flex-shrink-0">
           <Button 

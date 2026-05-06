@@ -102,15 +102,42 @@
 
 @layer components {
   .hero-gradient {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* GPU-composited gradient animation via pseudo-element + transform */
+  .hero-gradient::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400%;
+    height: 400%;
     background: linear-gradient(135deg, #090f19, #021f59, #2b5cac, #f5f9ff, #f2bc79, #f27f22);
-    background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
+    z-index: 0;
+    pointer-events: none;
+    will-change: transform;
   }
 
   .climax-gradient {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .climax-gradient::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400%;
+    height: 400%;
     background: linear-gradient(-45deg, #f27f22, #f2bc79, #f5f9ff, #2b5cac, #021f59, #090f19);
-    background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
+    z-index: 0;
+    pointer-events: none;
+    will-change: transform;
   }
 
   .hero-noise:after {
@@ -125,21 +152,22 @@
   }
 }
 
+/* transform is a compositable property — GPU-accelerated, no layout shift */
 @keyframes gradientShift {
   0% {
-    background-position: 0% 0%
+    transform: translate3d(0, 0, 0);
   }
 
   33% {
-    background-position: 100% 0%
+    transform: translate3d(-75%, 0, 0);
   }
 
   66% {
-    background-position: 100% 100%
+    transform: translate3d(-75%, -75%, 0);
   }
 
   100% {
-    background-position: 0% 0%
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -413,12 +441,14 @@
   left: 0;
   width: 6px;
   height: 6px;
+  margin-left: -3px;
+  margin-top: -3px;
   background-color: #f27f22;
-  /* rvl-laranja */
   border-radius: 50%;
   z-index: 9999;
   pointer-events: none;
-  transform: translate(-50%, -50%);
+  will-change: transform;
+  transition: transform 0.2s ease-out, opacity 0.3s ease;
 }
 
 .cursor-outer {
@@ -427,27 +457,25 @@
   left: 0;
   width: 40px;
   height: 40px;
+  margin-left: -20px;
+  margin-top: -20px;
   border: 1px solid #f27f22;
-  /* rvl-laranja */
   border-radius: 50%;
   z-index: 9998;
   pointer-events: none;
-  transform: translate(-50%, -50%);
   opacity: 0.5;
-  transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+  will-change: transform;
+  transition: transform 0.3s ease-out, opacity 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .cursor-inner.cursor-hover {
-  width: 4px;
-  height: 4px;
-  opacity: 0.5;
+  transform: scale(0.66);
+  opacity: 0.8;
 }
 
 .cursor-outer.cursor-hover {
-  width: 60px;
-  height: 60px;
+  transform: scale(1.5);
   background-color: rgba(242, 127, 34, 0.1);
-  border-width: 1px;
   opacity: 0.8;
 }
 

@@ -1,9 +1,38 @@
-import { useState } from 'react';
+import { useState, useEffect, type TouchEvent } from 'react';
 
 const ImageSlider = ({ images, title, year, actionLink, actionText, actionBgImage }: { images: string[], title: string, year: string, actionLink?: string, actionText?: string, actionBgImage?: string }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const totalSlides = actionLink ? images.length + 1 : images.length;
+
+  useEffect(() => {
+    if (!images || totalSlides === 0) return;
+
+    // Only auto-slide if component is visible to save CPU
+    let isVisible = true;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.1 }
+    );
+
+    const container = document.getElementById(`slider-${year}-${title.substring(0, 5)}`);
+    if (container) observer.observe(container);
+
+    const timer = setInterval(() => {
+      if (isVisible) {
+        setCurrentIndex((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
+      }
+    }, 12000);
+
+    return () => {
+      clearInterval(timer);
+      if (container) observer.unobserve(container);
+    };
+  }, [currentIndex, totalSlides, images, year, title]);
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
@@ -13,11 +42,42 @@ const ImageSlider = ({ images, title, year, actionLink, actionText, actionBgImag
     setCurrentIndex((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
   };
 
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      handleNext();
+    }
+    if (isRightSwipe) {
+      handlePrev();
+    }
+  };
+
   if (!images || totalSlides === 0) return null;
 
   return (
     <div className="mt-4 flex justify-center md:justify-start">
-      <div className="relative w-full h-full min-h-[300px] aspect-square md:aspect-square rounded-xl overflow-hidden shadow-lg group">
+      <div
+        id={`slider-${year}-${title.substring(0, 5)}`}
+        className="relative w-full h-full min-h-[300px] aspect-square md:aspect-square rounded-xl overflow-hidden shadow-lg group"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         {images.map((img, idx) => (
           <img
             key={idx}
@@ -25,6 +85,8 @@ const ImageSlider = ({ images, title, year, actionLink, actionText, actionBgImag
             alt={`Foto ${idx + 1} da edição de ${year} com o tema ${title}`}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
               }`}
+            loading="lazy"
+            fetchPriority={idx === 0 ? "high" : "low"}
           />
         ))}
 
@@ -54,7 +116,8 @@ const ImageSlider = ({ images, title, year, actionLink, actionText, actionBgImag
 
         <button
           onClick={handlePrev}
-          className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20 pointer-events-auto"
+          aria-label="Foto anterior"
+          className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 text-white opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20 pointer-events-auto"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-left w-5 h-5 -ml-0.5">
             <path d="m15 18-6-6 6-6"></path>
@@ -63,7 +126,8 @@ const ImageSlider = ({ images, title, year, actionLink, actionText, actionBgImag
 
         <button
           onClick={handleNext}
-          className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20 pointer-events-auto"
+          aria-label="Próxima foto"
+          className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 text-white opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20 pointer-events-auto"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-right w-5 h-5 ml-0.5">
             <path d="m9 18 6-6-6-6"></path>
@@ -130,7 +194,7 @@ const WhatWeLived = () => {
             {events.map((event, i) => (
               <article key={i} className={`md:flex items-start gap-8 ${i % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
                 <div className={`md:w-1/2 ${i % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                  <span className="font-aeonik text-5xl text-rvl-laranja/30 block mb-4">{event.year}</span>
+                  <span className="font-aeonik text-5xl text-rvl-laranja/70 block mb-4">{event.year}</span>
                   {event.images && event.images.length > 0 && (
                     <ImageSlider
                       images={event.images}
@@ -138,19 +202,13 @@ const WhatWeLived = () => {
                       actionLink={event.actionLink}
                       actionText={event.actionText}
                       actionBgImage={event.actionBgImage}
-                      title={''} 
+                      title={''}
                     />
                   )}
                 </div>
                 <div className="hidden md:block md:w-1/2"></div>
               </article>
             ))}
-            <div className="md:flex items-start gap-8">
-              <div className="hidden md:block md:w-1/2"></div>
-              <div className="md:w-1/2 md:text-left">
-                <p className="font-blauer italic text-rvl-laranja text-sm">→ 2026: "Por onde o rio passar, tudo viverá". — Em breve</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

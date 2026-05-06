@@ -47,14 +47,16 @@ export const CustomCursor = () => {
             outerXRef.current = lerp(outerXRef.current, mouseXRef.current, 0.15);
             outerYRef.current = lerp(outerYRef.current, mouseYRef.current, 0.15);
 
+            const isHovering = cursorOuter?.classList.contains("cursor-hover");
+            const innerScale = isHovering ? 0.66 : 1;
+            const outerScale = isHovering ? 1.5 : 1;
+
             if (cursorInner) {
-                cursorInner.style.left = `${innerXRef.current}px`;
-                cursorInner.style.top = `${innerYRef.current}px`;
+                cursorInner.style.transform = `translate3d(${innerXRef.current}px, ${innerYRef.current}px, 0) scale(${innerScale})`;
             }
 
             if (cursorOuter) {
-                cursorOuter.style.left = `${outerXRef.current}px`;
-                cursorOuter.style.top = `${outerYRef.current}px`;
+                cursorOuter.style.transform = `translate3d(${outerXRef.current}px, ${outerYRef.current}px, 0) scale(${outerScale})`;
             }
 
             requestRef = requestAnimationFrame(animateCursor);

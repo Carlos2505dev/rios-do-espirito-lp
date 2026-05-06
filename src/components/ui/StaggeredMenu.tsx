@@ -387,6 +387,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 <div className="flex items-center gap-4">
                     <div className="sm-logo" aria-label="Logo">
                         <a
+                            href="#inicio"
                             className="flex items-center gap-2 h-8 cursor-pointer"
                             onClick={(e) => {
                                 e.preventDefault();
@@ -406,6 +407,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                         >
                             <img
                                 alt="Logo CRE"
+                                width={120}
+                                height={32}
                                 className="h-full w-auto object-contain"
                                 src="/assets/Logo CRE Branco.svg"
                             />
@@ -435,15 +438,17 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 </div>
             </header>
 
-            <aside id="staggered-menu-panel" ref={panelRef} className="staggered-menu-panel" aria-hidden={!open}>
+            <aside id="staggered-menu-panel" ref={panelRef} className="staggered-menu-panel" aria-hidden={!open} inert={!open ? true : undefined}>
                 <div className="sm-panel-inner">
                     <ul className="sm-panel-list" role="list" data-numbering={displayItemNumbering || undefined}>
                         {items && items.length ? (
                             items.map((it, idx) => (
                                 <li className="sm-panel-itemWrap" key={it.label + idx}>
                                     <a
+                                        href={it.link}
                                         className="sm-panel-item cursor-pointer"
                                         aria-label={it.ariaLabel}
+                                        tabIndex={open ? 0 : -1}
                                         data-index={idx + 1}
                                         data-active={currentPath === it.link || (it.link !== '/' && currentPath.startsWith(it.link))}
                                         onMouseEnter={handleItemHover}
@@ -483,7 +488,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
                     <div className="sm-quick-contact">
                         <p className="sm-contact-text">Instagram</p>
-                        <a href="https://www.instagram.com/verbocabula/" target="_blank" rel="noopener noreferrer" className="sm-contact-email">
+                        <a href="https://www.instagram.com/verbocabula/" target="_blank" rel="noopener noreferrer" className="sm-contact-email" tabIndex={open ? 0 : -1}>
                             @verbocabula
                         </a>
                     </div>
