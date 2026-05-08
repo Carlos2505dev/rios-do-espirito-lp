@@ -1,11 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 
 const initialCards = [
-  { id: 1, img: '/assets/Ministros/Cinthya.webp' },
-  { id: 2, img: 'https://dunamismovement.com/wp-content/uploads/2026/03/DSM.png' },
-  { id: 3, img: 'https://dunamismovement.com/wp-content/uploads/2026/02/HANGAR-1.png' },
-  { id: 4, img: 'https://dunamismovement.com/wp-content/uploads/2026/02/faculdad-dunamis-card-2.png' },
-  { id: 5, img: 'https://dunamismovement.com/wp-content/uploads/2026/03/Dcon26.png' },
+  { id: 1, img: '/assets/Ministros/Emerson.webp' },
+  { id: 2, img: '/assets/Ministros/Vania.webp' },
+  { id: 3, img: '/assets/Ministros/Cinthya.webp' },
+  { id: 4, img: '/assets/Ministros/Davi.webp' },
+  { id: 5, img: '/assets/Ministros/Gian.webp' },
 ];
 
 const Ministros = () => {
