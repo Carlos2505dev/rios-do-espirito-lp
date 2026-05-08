@@ -18,7 +18,7 @@ const About = () => {
           {[
             { id: '01', title: 'VIDA', text: 'Onde o Rio toca, a morte acaba. É o fluir da Palavra que gera cura, restauração e o despertar da natureza divina em nós. Não buscamos apenas um encontro, buscamos a substância que sustenta a nossa caminhada.' },
             { id: '02', title: 'PROFUNDIDADE', text: 'Saímos do superficial para o sobrenatural. Um ambiente de imersão onde o conhecimento se torna experiência e os dons são despertados pelo movimento da correnteza. É o momento de deixar de apenas observar e passar a navegar.' },
-            { id: '03', title: 'IMPACTO', text: 'Não retemos a água; nos tornamos canais. Acreditamos em uma igreja que transborda a vida do Espírito para além das paredes, transformando a realidade da nossa cidade com a mensagem do Reino.' }
+            { id: '03', title: 'IMPACTO', text: 'Não retemos o fluir do Espírito; nos tornamos canais. Acreditamos em uma igreja que transborda a vida do Espírito para além das paredes, transformando a realidade da nossa cidade com a mensagem do Reino.' }
           ].map((item, i) => (
             <article key={i} className="servico-card group text-left">
               <div className="icone-box">
