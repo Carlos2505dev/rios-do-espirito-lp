@@ -1,25 +1,55 @@
-
-
-/*
 const schedule = [
   {
     day: "Quinta-feira",
     date: "04 DE JUNHO",
     events: [
-      { time: "10h00", title: "Início da Conferência" },
-      { time: "21h30", title: "Encerramento do 1º Dia" },
+      { time: "18:50", title: "Abertura dos portões / Check-in" },
+      { time: "19:10", title: "Momento Profético 🔥🔥" },
+      { time: "19:30", title: "Início" },
+      { time: "20:30", title: "Intervalo" },
+      { time: "21:00", title: "Palavra" },
     ]
   },
   {
     day: "Sexta-feira",
     date: "05 DE JUNHO",
     events: [
-      { time: "10h00", title: "Início da Conferência" },
-      { time: "21h30", title: "Encerramento do 2º Dia" },
+      { time: "18:50", title: "Abertura dos portões / Check-in" },
+      { time: "19:10", title: "Momento Profético 🔥🔥" },
+      { time: "19:30", title: "Início" },
+      { time: "20:30", title: "Intervalo" },
+      { time: "21:00", title: "Palavra" },
+    ]
+  },
+  {
+    day: "Sábado - Manhã",
+    date: "06 DE JUNHO",
+    events: [
+      { time: "09:30", title: "Abertura dos portões" },
+      { time: "10:00", title: "Início" },
+      { time: "10:30", title: "Intervalo" },
+      { time: "11:00", title: "Ministração" },
+    ]
+  },
+  {
+    day: "Sábado - Tarde",
+    date: "06 DE JUNHO",
+    events: [
+      { time: "15:00", title: "Sábado Teens (até 16:30)" },
+    ]
+  },
+  {
+    day: "Sábado - Noite",
+    date: "06 DE JUNHO",
+    events: [
+      { time: "18:00", title: "Abertura dos portões" },
+      { time: "18:30", title: "Momento Profético 🔥🔥" },
+      { time: "19:00", title: "Início" },
+      { time: "20:00", title: "Intervalo" },
+      { time: "20:30", title: "Ministração" },
     ]
   }
 ];
-*/
 
 const Programacao = () => {
   return (
@@ -38,16 +68,7 @@ const Programacao = () => {
           </h2>
         </div>
 
-        {/* Placeholder Message */}
-        <div className="flex flex-col items-center justify-center py-10 text-center">
-          <p className="font-aeonik text-xl md:text-2xl text-rvl-escuro/80 font-medium italic tracking-wide">
-            Em breve será lançada a programação
-          </p>
-          <div className="mt-6 w-12 h-[2px] bg-rvl-laranja/30"></div>
-        </div>
-
-        {/* Schedule Content (Comentado para uso futuro) */}
-        {/* 
+        {/* Schedule Content */}
         <div className="space-y-16 md:space-y-24">
           {schedule.map((dayData, idx) => (
             <div key={idx} className="flex flex-col md:flex-row gap-8 md:gap-0">
@@ -75,7 +96,7 @@ const Programacao = () => {
                       </div>
                     </div>
 
-                    <span className="text-lg md:text-xl font-aeonik font-bold text-rvl-laranja tracking-tight">
+                    <span className={`text-lg md:text-xl font-aeonik font-bold tracking-tight ${event.title.includes('Momento Profético') ? 'animate-fire-text' : 'text-rvl-laranja'}`}>
                       {event.title}
                     </span>
                   </div>
@@ -84,7 +105,6 @@ const Programacao = () => {
             </div>
           ))}
         </div>
-        */}
       </div>
     </section>
   );

@@ -152,14 +152,14 @@ const Ministros = () => {
             onClick={prevCard}
             className="absolute left-[2px] sm:-left-[15px] top-1/2 -translate-y-1/2 z-10 p-0 bg-transparent border-none cursor-pointer hover:scale-110 transition-transform"
           >
-            <img src="https://dunamismovement.com/wp-content/uploads/2025/08/esquerda.png" className="w-[36px] sm:w-[38px]" alt="Previous" draggable={false} />
+            <img src="https://dunamismovement.com/wp-content/uploads/2025/08/esquerda.png" className="w-[36px] sm:w-[38px] brightness-0 invert" alt="Previous" draggable={false} />
           </button>
 
           <button
             onClick={nextCard}
             className="absolute right-[2px] sm:-right-[15px] top-1/2 -translate-y-1/2 z-10 p-0 bg-transparent border-none cursor-pointer hover:scale-110 transition-transform"
           >
-            <img src="https://dunamismovement.com/wp-content/uploads/2025/08/direira_.png" className="w-[36px] sm:w-[38px] invert" alt="Next" draggable={false} />
+            <img src="https://dunamismovement.com/wp-content/uploads/2025/08/direira_.png" className="w-[36px] sm:w-[38px] brightness-0 invert" alt="Next" draggable={false} />
           </button>
         </div>
 

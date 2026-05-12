@@ -2,14 +2,15 @@ import { Button } from './ui/button';
 
 const Tickets = () => {
   const tickets = [
-    { name: 'INGRESSO INDIVIDUAL', price: '120,00', features: ['+ R$ 8,16 taxa', 'Até 30/05 às 23:59'], highlight: true },
-    { name: 'INGRESSO INFANTIL', price: '25,00', features: ['+ R$ 2,40 taxa', 'Até 01/05 às 23:59'], sub: '02 MESES A 4 ANOS' },
-    { name: 'INGRESSO INFANTIL', price: '40,00', features: ['+ R$ 2,72 taxa', 'Até 01/05 às 23:59'], sub: '5 A 10 ANOS' }
+    { name: 'INGRESSO INDIVIDUAL', price: '120,00', features: ['+ R$ 8,16 taxa', 'Até 30/05 às 23:59'], highlight: true, batch: 'SEGUNDO LOTE' },
+    { name: 'INGRESSO INFANTIL', price: '45,00', features: ['+ R$ 3,06 taxa', 'Até 30/05 às 23:59'], sub: '5 A 10 ANOS', batch: 'SEGUNDO LOTE' },
+    { name: 'INGRESSO CASADINHA', price: '220,00', features: ['+ R$ 14,96 taxa', 'Até 24/05 às 23:00'] },
+    { name: 'INGRESSO INFANTIL', price: '30,00', features: ['+ R$ 2,40 taxa', 'Até 30/05 às 23:59'], sub: '04 MESES A 4 ANOS', batch: 'SEGUNDO LOTE' }
   ];
 
   return (
     <section id="ingressos" aria-labelledby="tickets-title" className="bg-rvl-creme-bg py-20 md:py-28 px-6 scroll-mt-0 md:scroll-mt-20">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-[#B5440A] font-medium mb-2 uppercase tracking-wider text-sm font-aeonik">Ingressos | CRE 26</p>
           <h2 id="tickets-title" className="text-rvl-escuro">
@@ -17,7 +18,7 @@ const Tickets = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
           {tickets.map((ticket, i) => (
             <article key={i} className={`relative bg-rvl-escuro rounded-2xl shadow-2xl overflow-visible h-full flex flex-col ${ticket.highlight ? 'ring-2 ring-rvl-laranja/60' : ''}`}>
               <div className="px-5 pt-6 pb-4 text-center flex-1">

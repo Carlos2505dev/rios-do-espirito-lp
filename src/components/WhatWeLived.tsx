@@ -155,7 +155,6 @@ const WhatWeLived = () => {
       year: '2024',
       images: [
         '/assets/2024/IMG_0067.webp',
-        '/assets/2024/IMG_0134.webp',
         '/assets/2024/IMG_0161.webp',
         '/assets/2024/IMG_0768.webp',
         '/assets/2024/IMG_1058.webp',
