@@ -17,7 +17,7 @@ const Experience = () => {
   ];
 
   return (
-    <section className="bg-rvl-exp-bg py-20 md:py-28 px-6 overflow-hidden">
+    <section className="bg-rvl-exp-bg pt-20 md:pt-28 pb-10 md:pb-14 px-6 overflow-hidden">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-rvl-escuro mb-4">A Experiência</h2>
         <p className="font-blauer text-rvl-escuro/70 max-w-2xl leading-relaxed mb-12">

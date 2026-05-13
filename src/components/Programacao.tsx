@@ -53,7 +53,7 @@ const schedule = [
 
 const Programacao = () => {
   return (
-    <section id="programacao" className="bg-rvl-creme-bg text-rvl-escuro py-20 md:py-28 px-6 overflow-hidden">
+    <section id="programacao" className="bg-rvl-creme-bg text-rvl-escuro pt-10 md:pt-14 pb-20 md:pb-28 px-6 overflow-hidden">
       <div className="max-w-5xl mx-auto">
         {/* Header Section */}
         <div className="mb-14 md:mb-20">
@@ -83,7 +83,7 @@ const Programacao = () => {
                 </div>
               </div>
 
-              <div className="w-full md:w-3/4 space-y-10">
+              <div className="w-full md:w-3/4 space-y-4">
                 {dayData.events.map((event, eIdx) => (
                   <div key={eIdx} className="grid grid-cols-[60px_40px_1fr] md:grid-cols-[100px_50px_1fr] items-center gap-2 md:gap-4">
                     <span className="text-base md:text-lg font-aeonik font-bold text-rvl-escuro text-right">

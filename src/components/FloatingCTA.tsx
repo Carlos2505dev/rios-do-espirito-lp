@@ -27,7 +27,7 @@ const FloatingCTA = () => {
   return (
     <div className={`bot ${isVisible ? 'bot-ativo' : ''}`}>
       <Button
-        href="#inscricao"
+        href="https://tiketo.com.br/evento/5167"
         className="w-full"
         buttonClassName="!py-1.5 !px-8 !text-sm"
         boxClassName="!p-1 !gap-1"

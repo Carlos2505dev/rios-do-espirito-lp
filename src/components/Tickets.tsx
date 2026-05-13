@@ -3,9 +3,9 @@ import { Button } from './ui/button';
 const Tickets = () => {
   const tickets = [
     { name: 'INGRESSO INDIVIDUAL', price: '120,00', features: ['+ R$ 8,16 taxa', 'Até 30/05 às 23:59'], highlight: true, batch: 'SEGUNDO LOTE' },
-    { name: 'INGRESSO INFANTIL', price: '45,00', features: ['+ R$ 3,06 taxa', 'Até 30/05 às 23:59'], sub: '5 A 10 ANOS', batch: 'SEGUNDO LOTE' },
     { name: 'INGRESSO CASADINHA', price: '220,00', features: ['+ R$ 14,96 taxa', 'Até 24/05 às 23:00'] },
-    { name: 'INGRESSO INFANTIL', price: '30,00', features: ['+ R$ 2,40 taxa', 'Até 30/05 às 23:59'], sub: '04 MESES A 4 ANOS', batch: 'SEGUNDO LOTE' }
+    { name: 'INGRESSO INFANTIL', price: '30,00', features: ['+ R$ 2,40 taxa', 'Até 30/05 às 23:59'], sub: '04 MESES A 4 ANOS', batch: 'SEGUNDO LOTE' },
+    { name: 'INGRESSO INFANTIL', price: '45,00', features: ['+ R$ 3,06 taxa', 'Até 30/05 às 23:59'], sub: '5 A 10 ANOS', batch: 'SEGUNDO LOTE' },
   ];
 
   return (
