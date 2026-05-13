@@ -1,7 +1,7 @@
 const schedule = [
   {
     day: "Quinta-feira",
-    date: "04 DE JUNHO",
+    date: "18 DE JUNHO",
     events: [
       { time: "18:50", title: "Abertura dos portões / Check-in" },
       { time: "19:10", title: "Momento Profético 🔥🔥" },
@@ -12,7 +12,7 @@ const schedule = [
   },
   {
     day: "Sexta-feira",
-    date: "05 DE JUNHO",
+    date: "19 DE JUNHO",
     events: [
       { time: "18:50", title: "Abertura dos portões / Check-in" },
       { time: "19:10", title: "Momento Profético 🔥🔥" },
@@ -23,7 +23,7 @@ const schedule = [
   },
   {
     day: "Sábado - Manhã",
-    date: "06 DE JUNHO",
+    date: "20 DE JUNHO",
     events: [
       { time: "09:30", title: "Abertura dos portões" },
       { time: "10:00", title: "Início" },
@@ -33,14 +33,14 @@ const schedule = [
   },
   {
     day: "Sábado - Tarde",
-    date: "06 DE JUNHO",
+    date: "20 DE JUNHO",
     events: [
       { time: "15:00", title: "Sábado Teens (até 16:30)" },
     ]
   },
   {
     day: "Sábado - Noite",
-    date: "06 DE JUNHO",
+    date: "20 DE JUNHO",
     events: [
       { time: "18:00", title: "Abertura dos portões" },
       { time: "18:30", title: "Momento Profético 🔥🔥" },

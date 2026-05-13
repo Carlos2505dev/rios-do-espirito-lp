@@ -5,14 +5,13 @@ import LineUp from './components/LineUp';
 import { CustomCursor } from './components/CustomCursor';
 import FloatingCTA from './components/FloatingCTA';
 
-
 // Lazy loading for components below the fold
 const Tickets = lazy(() => import('./components/Tickets'));
 const About = lazy(() => import('./components/About'));
 const Experience = lazy(() => import('./components/Experience'));
 const WhatWeLived = lazy(() => import('./components/WhatWeLived'));
 const Programacao = lazy(() => import('./components/Programacao'));
-const Testimonials = lazy(() => import('./components/Testimonials'));
+
 const FAQ = lazy(() => import('./components/FAQ'));
 const Footer = lazy(() => import('./components/Footer'));
 const CallToAction = lazy(() => import('./components/CallToAction'));
@@ -33,7 +32,7 @@ const App = () => {
         <Suspense fallback={<div className="h-32" />}>
           <Ministros />
         </Suspense>
-        
+
         <Suspense fallback={<div className="h-32" />}>
           <About />
         </Suspense>
@@ -50,9 +49,7 @@ const App = () => {
           <Programacao />
         </Suspense>
 
-        <Suspense fallback={<div className="h-32" />}>
-          <Testimonials />
-        </Suspense>
+
 
         <Suspense fallback={<div className="h-32" />}>
           <Tickets />
