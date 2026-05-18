@@ -1,4 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import {
+  VideoPlayer,
+  VideoPlayerContent,
+  VideoPlayerControlBar,
+  VideoPlayerPlayButton,
+  VideoPlayerSeekBackwardButton,
+  VideoPlayerSeekForwardButton,
+  VideoPlayerMuteButton,
+  VideoPlayerTimeRange,
+  VideoPlayerTimeDisplay,
+  VideoPlayerVolumeRange,
+} from '@/components/video';
+
+/* ── Countdown Display ─────────────────────────────────────── */
 
 const CountdownItem = ({ value, label }: { value: number; label: string }) => (
   <div className="flex flex-col items-center">
@@ -11,7 +25,13 @@ const CountdownItem = ({ value, label }: { value: number; label: string }) => (
   </div>
 );
 
+/** Path to the video asset (served from /public) */
+const VIDEO_SOURCE = '/assets/video.mp4';
+/** Poster image shown before video is played */
+const VIDEO_POSTER = '/assets/capa_rios2026.webp';
+
 const LineUp = () => {
+  /* ── Countdown State ───────────────────────────────────── */
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -21,6 +41,39 @@ const LineUp = () => {
 
   const [hasFinished, setHasFinished] = useState(false);
 
+  /* ── Video Auto-pause on Scroll (Performance) ──────────── */
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+
+  /**
+   * Observes the video container and pauses playback when the
+   * element leaves the viewport — prevents wasted decoding
+   * cycles and GPU bandwidth on mobile devices.
+   */
+  useEffect(() => {
+    const container = videoContainerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const videoElement = container.querySelector('video');
+        if (!videoElement) return;
+
+        /* Only auto-pause — never auto-play to respect user intent */
+        if (!entry.isIntersecting && !videoElement.paused) {
+          videoElement.pause();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(container);
+
+    return () => {
+      observer.unobserve(container);
+    };
+  }, []);
+
+  /* ── Countdown Timer ───────────────────────────────────── */
   useEffect(() => {
     // Set target date: June 18, 2026 at 19:00:00
     const targetDate = new Date('2026-06-18T19:00:00').getTime();
@@ -38,7 +91,7 @@ const LineUp = () => {
 
     const interval = setInterval(() => {
       if (!isVisible) return;
-      
+
       const now = new Date().getTime();
       const distance = targetDate - now;
 
@@ -66,7 +119,8 @@ const LineUp = () => {
     };
   }, [hasFinished]);
 
-  const triggerConfetti = async () => {
+  /* ── Confetti Celebration ──────────────────────────────── */
+  const triggerConfetti = useCallback(async () => {
     const { default: confetti } = await import('canvas-confetti');
     const duration = 5 * 1000;
     const animationEnd = Date.now() + duration;
@@ -74,37 +128,50 @@ const LineUp = () => {
 
     const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
 
-    const interval: any = setInterval(function () {
-      const timeLeft = animationEnd - Date.now();
+    const confettiInterval = setInterval(function () {
+      const remaining = animationEnd - Date.now();
 
-      if (timeLeft <= 0) {
-        return clearInterval(interval);
+      if (remaining <= 0) {
+        return clearInterval(confettiInterval);
       }
 
-      const particleCount = 50 * (timeLeft / duration);
+      const particleCount = 50 * (remaining / duration);
       confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
       confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
     }, 250);
-  };
+  }, []);
 
   return (
     <section className="bg-rvl-creme-bg py-20 md:py-28 px-6">
       <div className="max-w-5xl mx-auto">
-        <button
-          className="relative w-full aspect-video rounded-lg overflow-hidden group"
-          aria-label="Reproduzir vídeo Line Up"
-        >
-          <img src="/assets/capa_rios2026.webp" alt="Line Up" loading="lazy" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-            <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-              <svg viewBox="0 0 24 24" fill="white" className="w-10 h-10 ml-1">
-                <path d="M8 5v14l11-7z"></path>
-              </svg>
-            </div>
-          </div>
-        </button>
 
-        {/* Countdown Section */}
+        {/* ── Video Player ────────────────────────────────── */}
+        <div
+          ref={videoContainerRef}
+          className="w-full aspect-video"
+        >
+          <VideoPlayer className="overflow-hidden rounded-lg border">
+            <VideoPlayerContent
+              crossOrigin=""
+              poster={VIDEO_POSTER}
+              preload="none"
+              playsInline
+              slot="media"
+              src={VIDEO_SOURCE}
+            />
+            <VideoPlayerControlBar>
+              <VideoPlayerPlayButton />
+              <VideoPlayerSeekBackwardButton />
+              <VideoPlayerSeekForwardButton />
+              <VideoPlayerTimeRange />
+              <VideoPlayerTimeDisplay showDuration />
+              <VideoPlayerMuteButton />
+              <VideoPlayerVolumeRange />
+            </VideoPlayerControlBar>
+          </VideoPlayer>
+        </div>
+
+        {/* ── Countdown Section ───────────────────────────── */}
         <div id="countdown-section" className="mt-16 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden bg-rvl-escuro">
           {/* Hero Gradient with Opacity */}
           <div className="hero-gradient absolute inset-0 opacity-60"></div>

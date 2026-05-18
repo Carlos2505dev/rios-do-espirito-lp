@@ -74,6 +74,7 @@ const ImageSlider = ({ images, title, year, actionLink, actionText, actionBgImag
       <div
         id={`slider-${year}-${title.substring(0, 5)}`}
         className="relative w-full h-full min-h-[300px] aspect-square md:aspect-square rounded-xl overflow-hidden shadow-lg group"
+        style={{ transform: 'translateZ(0)' }}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
@@ -83,8 +84,10 @@ const ImageSlider = ({ images, title, year, actionLink, actionText, actionBgImag
             key={idx}
             src={img}
             alt={`Foto ${idx + 1} da edição de ${year} com o tema ${title}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
+            style={{ willChange: 'opacity' }}
+            decoding="async"
             loading="lazy"
             fetchPriority={idx === 0 ? "high" : "low"}
           />

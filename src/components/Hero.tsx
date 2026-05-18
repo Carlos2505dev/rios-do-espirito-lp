@@ -60,7 +60,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <Button href="https://tiketo.com.br/evento/5167" className="mt-2 md:-mt-4">Escolha seu ingresso aqui</Button>
+
         </div>
       </div>
 

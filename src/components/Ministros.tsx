@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { Button } from './ui/button';
 
 const initialCards = [
   { id: 1, img: '/assets/Ministros/Emerson.webp' },
@@ -163,6 +164,11 @@ const Ministros = () => {
           </button>
         </div>
 
+
+      </div>
+
+      <div className="mt-16 flex justify-center w-full relative z-20">
+        <Button href="https://tiketo.com.br/evento/5167">Escolha seu ingresso aqui</Button>
       </div>
     </section>
   );
