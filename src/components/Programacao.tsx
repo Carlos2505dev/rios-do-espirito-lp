@@ -59,7 +59,7 @@ const Programacao = () => {
         <div className="mb-14 md:mb-20">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-rvl-laranja"></div>
-            <span className="text-rvl-laranja font-aeonik font-bold tracking-[0.2em] text-[11px] md:text-xs uppercase">
+            <span className="text-rvl-escuro font-aeonik font-bold tracking-[0.2em] text-[11px] md:text-xs uppercase">
               CRE 2026
             </span>
           </div>
@@ -76,8 +76,8 @@ const Programacao = () => {
                 <h3 className="text-2xl md:text-3xl font-aeonik font-bold text-rvl-escuro tracking-tight">
                   {dayData.day}
                 </h3>
-                <div className="bg-rvl-laranja/10 px-4 py-1.5 rounded-full border border-rvl-laranja/5">
-                  <span className="text-rvl-laranja font-aeonik font-bold text-[10px] md:text-xs tracking-widest uppercase">
+                <div className="bg-rvl-laranja/10 px-4 py-1.5 rounded-full border border-rvl-laranja/20">
+                  <span className="text-rvl-escuro font-aeonik font-bold text-[10px] md:text-xs tracking-widest uppercase">
                     {dayData.date}
                   </span>
                 </div>
@@ -96,7 +96,7 @@ const Programacao = () => {
                       </div>
                     </div>
 
-                    <span className={`text-lg md:text-xl font-aeonik font-bold tracking-tight ${event.title.includes('Momento Profético') ? 'animate-fire-text' : 'text-rvl-laranja'}`}>
+                    <span className={`text-lg md:text-xl font-aeonik font-bold tracking-tight ${event.title.includes('Momento Profético') ? 'animate-fire-text' : 'text-rvl-escuro'}`}>
                       {event.title}
                     </span>
                   </div>

@@ -81,22 +81,43 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         return () => window.removeEventListener('popstate', handleLocationChange);
     }, []);
 
+    const rafIdRef = useRef<number | null>(null);
+
+    // Cleanup RAF on unmount
+    useEffect(() => {
+        return () => {
+            if (rafIdRef.current !== null) {
+                cancelAnimationFrame(rafIdRef.current);
+            }
+        };
+    }, []);
+
     const handleItemHover = useCallback((e: React.MouseEvent<HTMLElement>) => {
         if (!itemGlowRef.current) return;
-        const target = e.currentTarget;
-        // Cache rects to avoid repeated DOM reads
-        const rect = target.getBoundingClientRect();
-        const panelRect = panelRef.current?.getBoundingClientRect();
-
-        if (panelRect) {
-            const y = rect.top - panelRect.top + rect.height / 2;
-            gsap.to(itemGlowRef.current, {
-                top: y,
-                opacity: 0.6,
-                duration: 0.4,
-                ease: 'power2.out'
-            });
+        
+        // Cancel any pending RAF to avoid queuing multiple updates
+        if (rafIdRef.current !== null) {
+            cancelAnimationFrame(rafIdRef.current);
         }
+
+        const target = e.currentTarget;
+        
+        // Use requestAnimationFrame to batch DOM reads and avoid layout thrashing
+        rafIdRef.current = requestAnimationFrame(() => {
+            const rect = target.getBoundingClientRect();
+            const panelRect = panelRef.current?.getBoundingClientRect();
+
+            if (panelRect && itemGlowRef.current) {
+                const y = rect.top - panelRect.top + rect.height / 2;
+                gsap.to(itemGlowRef.current, {
+                    top: y,
+                    opacity: 0.6,
+                    duration: 0.4,
+                    ease: 'power2.out'
+                });
+            }
+            rafIdRef.current = null;
+        });
     }, []);
 
     const handleItemLeave = useCallback(() => {

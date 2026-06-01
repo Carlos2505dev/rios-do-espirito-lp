@@ -9,7 +9,7 @@ const About = () => {
         </h2>
         <div className="font-blauer text-rvl-escuro/80 text-base md:text-lg max-w-4xl leading-relaxed mb-14 space-y-5">
           <p>
-            A Conferência Rios do Espírito não é um marco no calendário, é um fluxo que seguimos. Há sete anos, nos reunimos para mergulhar no que Deus está gerando agora. Em 2026, nossa direção é clara: <span className="text-rvl-laranja">"Por onde o rio passar, tudo viverá"</span> (Ezequiel 47:9).          </p>
+            A Conferência Rios do Espírito não é um marco no calendário, é um fluxo que seguimos. Há sete anos, nos reunimos para mergulhar no que Deus está gerando agora. Em 2026, nossa direção é clara: <span className="text-rvl-escuro font-semibold">"Por onde o rio passar, tudo viverá"</span> (Ezequiel 47:9).          </p>
           <p>
             Este não é um convite para assistir a uma conferência, mas para abandonar a segurança da margem. É o lugar de quem entende que a estagnação não faz parte do Reino e busca a renovação que só acontece em águas profundas. Seja você da nossa casa ou alguém sedento por um novo, o Rio está passando. E ele traz vida.
           </p>
@@ -22,7 +22,7 @@ const About = () => {
           ].map((item, i) => (
             <article key={i} className="servico-card group text-left">
               <div className="icone-box">
-                <span className="font-aeonik text-7xl md:text-8xl text-rvl-laranja/70 group-hover:text-rvl-laranja transition-colors duration-300 leading-none inline-block">
+                <span className="font-aeonik text-7xl md:text-8xl text-rvl-laranja group-hover:text-rvl-laranja transition-colors duration-300 leading-none inline-block">
                   {item.id}
                 </span>
               </div>

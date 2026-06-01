@@ -41,14 +41,55 @@ const LineUp = () => {
 
   const [hasFinished, setHasFinished] = useState(false);
 
-  /* ── Video Auto-pause on Scroll (Performance) ──────────── */
+  /* ── Video State ──────────────────────────────────────── */
+  const [isPlaying, setIsPlaying] = useState(false);
   const videoContainerRef = useRef<HTMLDivElement>(null);
+  const videoElementRef = useRef<HTMLVideoElement | null>(null);
 
   /**
-   * Observes the video container and pauses playback when the
-   * element leaves the viewport — prevents wasted decoding
-   * cycles and GPU bandwidth on mobile devices.
+   * Handle play/pause button click
    */
+  const handlePlayPauseClick = useCallback(() => {
+    const videoElement = videoElementRef.current || videoContainerRef.current?.querySelector('video');
+    if (videoElement) {
+      if (videoElement.paused) {
+        videoElement.play();
+        setIsPlaying(true);
+      } else {
+        videoElement.pause();
+        setIsPlaying(false);
+      }
+    }
+  }, []);
+
+  /**
+   * Monitor video playback state for UI updates
+   */
+  useEffect(() => {
+    const container = videoContainerRef.current;
+    if (!container) return;
+
+    const videoElement = container.querySelector('video');
+    if (!videoElement) return;
+
+    videoElementRef.current = videoElement;
+
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
+    const handleEnded = () => setIsPlaying(false);
+
+    videoElement.addEventListener('play', handlePlay);
+    videoElement.addEventListener('pause', handlePause);
+    videoElement.addEventListener('ended', handleEnded);
+
+    return () => {
+      videoElement.removeEventListener('play', handlePlay);
+      videoElement.removeEventListener('pause', handlePause);
+      videoElement.removeEventListener('ended', handleEnded);
+    };
+  }, []);
+
+  /* ── Video Auto-pause on Scroll (Performance) ──────────── */
   useEffect(() => {
     const container = videoContainerRef.current;
     if (!container) return;
@@ -148,7 +189,7 @@ const LineUp = () => {
         {/* ── Video Player ────────────────────────────────── */}
         <div
           ref={videoContainerRef}
-          className="w-full aspect-video"
+          className="w-full aspect-video relative"
         >
           <VideoPlayer className="overflow-hidden rounded-lg border">
             <VideoPlayerContent
@@ -169,6 +210,62 @@ const LineUp = () => {
               <VideoPlayerVolumeRange />
             </VideoPlayerControlBar>
           </VideoPlayer>
+
+          {/* ── Large Play/Pause Button Overlay ────────────── */}
+          <button
+            onClick={handlePlayPauseClick}
+            className={`absolute inset-0 flex items-center justify-center group transition-opacity duration-300 ${
+              isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'
+            }`}
+            aria-label={isPlaying ? 'Pausar vídeo' : 'Reproduzir vídeo'}
+          >
+            <div className="relative w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 flex items-center justify-center">
+              {/* Outer Ring with Glow */}
+              <div className={`absolute inset-0 rounded-full border-2 transition-all duration-300 ${
+                isPlaying
+                  ? 'border-white/30 group-hover:border-white/60'
+                  : 'border-white/60 group-hover:border-white'
+              }`}></div>
+
+              {/* Inner Circle */}
+              <div className={`absolute inset-2 rounded-full transition-all duration-300 ${
+                isPlaying
+                  ? 'bg-white/10 group-hover:bg-white/20'
+                  : 'bg-white/20 group-hover:bg-white/30'
+              }`}></div>
+
+              {/* Glow Effect */}
+              <div className={`absolute inset-0 rounded-full blur-xl transition-all duration-300 ${
+                isPlaying
+                  ? 'bg-white/0 group-hover:bg-white/10'
+                  : 'bg-white/20 group-hover:bg-white/30'
+              }`}></div>
+
+              {/* Icon */}
+              <div className="relative z-10 text-white fill-white">
+                {isPlaying ? (
+                  // Pause Icon
+                  <svg
+                    className="w-8 h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 transition-transform duration-300 group-hover:scale-110"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <rect x="6" y="4" width="4" height="16" />
+                    <rect x="14" y="4" width="4" height="16" />
+                  </svg>
+                ) : (
+                  // Play Icon
+                  <svg
+                    className="w-8 h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 transition-transform duration-300 group-hover:scale-110"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                )}
+              </div>
+            </div>
+          </button>
         </div>
 
         {/* ── Countdown Section ───────────────────────────── */}

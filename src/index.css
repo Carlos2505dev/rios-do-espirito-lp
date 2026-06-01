@@ -188,7 +188,7 @@
 /* Maximeta Glowbox Button Styles */
 .glowbox-container {
   width: 100%;
-  max-width: 425px;
+  max-width: 380px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -200,7 +200,7 @@
   border-radius: 999px;
   position: relative;
   width: 100%;
-  max-width: 423px;
+  max-width: 378px;
   margin: auto;
   --animation-speed: 2s;
 }
@@ -345,8 +345,7 @@
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 12px 55px;
-  /* Increased from 25px to 55px */
+  padding: 14px 32px;
   background: linear-gradient(271.55deg,
       rgba(168, 85, 247, 0.5) 5.88%,
       rgba(147, 51, 234, 0.1) 50.22%,
@@ -354,10 +353,10 @@
   border: 1px solid rgba(168, 85, 247, 0.6);
   border-radius: 100px;
   font-family: "Aeonik", sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 28px;
-  letter-spacing: -0.5px;
+  line-height: 24px;
+  letter-spacing: 0px;
   color: white;
   overflow: hidden;
   box-shadow:

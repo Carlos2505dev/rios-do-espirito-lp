@@ -196,7 +196,7 @@ const WhatWeLived = () => {
             {events.map((event, i) => (
               <article key={i} className={`md:flex items-start gap-8 ${i % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
                 <div className={`md:w-1/2 ${i % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                  <span className="font-aeonik text-5xl text-rvl-laranja/70 block mb-4">{event.year}</span>
+                  <span className="font-aeonik text-5xl text-rvl-laranja block mb-4">{event.year}</span>
                   {event.images && event.images.length > 0 && (
                     <ImageSlider
                       images={event.images}

@@ -69,7 +69,7 @@ const CallToAction = () => {
           >
             <div className="flex items-center gap-3 mb-8">
               <div className="h-[2px] w-12 bg-rvl-laranja rounded-full"></div>
-              <h2 className="tracking-[0.3em] text-rvl-laranja uppercase text-sm font-bold">Quando e Onde</h2>
+              <h2 className="tracking-[0.3em] text-rvl-escuro uppercase text-sm font-bold">Quando e Onde</h2>
             </div>
 
             <div className="space-y-8">
@@ -79,7 +79,7 @@ const CallToAction = () => {
                 </div>
                 <div>
                   <p className="font-aeonik text-3xl md:text-4xl tracking-widest text-rvl-escuro uppercase leading-tight font-bold">
-                    18 E 20 DE <span className="text-rvl-laranja">JUNHO</span>
+                    18 E 20 DE <span className="text-rvl-escuro">JUNHO</span>
                   </p>
                   <p className="text-rvl-escuro/70 text-sm mt-2 uppercase tracking-[0.2em] font-aeonik flex items-center gap-2">
                     <Sparkles size={14} className="text-rvl-laranja/40" />
