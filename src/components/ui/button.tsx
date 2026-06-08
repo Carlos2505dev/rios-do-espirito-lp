@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -10,6 +10,12 @@ interface ButtonProps {
 }
 
 export const Button = ({ children, href, onClick, className = '', buttonClassName = '', boxClassName = '' }: ButtonProps) => {
+  const [isPressed, setIsPressed] = useState(false);
+
+  const handleMouseDown = () => setIsPressed(true);
+  const handleMouseUp = () => setIsPressed(false);
+  const handleMouseLeave = () => setIsPressed(false);
+
   const content = (
     <div className={`btn-cta-box ${boxClassName}`}>
       <div className={`btn-cta ${buttonClassName}`}>{children}</div>
@@ -21,7 +27,7 @@ export const Button = ({ children, href, onClick, className = '', buttonClassNam
 
   return (
     <div className={`glowbox-container ${className}`}>
-      <div className={`glowbox glowbox-active ${className}`}>
+      <div className={`glowbox glowbox-active ${isPressed ? 'btn-pressed' : ''} ${className}`}>
         <div className="glowbox-animations">
           <div className="glowbox-glow"></div>
           <div className="glowbox-stars-masker">
@@ -34,11 +40,25 @@ export const Button = ({ children, href, onClick, className = '', buttonClassNam
         </div>
 
         {href ? (
-          <a href={href} className="block w-full h-full" target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+          <a 
+            href={href} 
+            className="block w-full h-full" 
+            target={href.startsWith('http') ? '_blank' : undefined} 
+            rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
+          >
             {content}
           </a>
         ) : (
-          <button onClick={onClick} className="block w-full h-full bg-transparent border-none p-0 cursor-pointer">
+          <button 
+            onClick={onClick} 
+            className="block w-full h-full bg-transparent border-none p-0 cursor-pointer"
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
+          >
             {content}
           </button>
         )}

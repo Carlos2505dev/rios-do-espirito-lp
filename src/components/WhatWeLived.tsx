@@ -10,7 +10,7 @@ const ImageSlider = ({ images, title, year, actionLink, actionText, actionBgImag
   useEffect(() => {
     if (!images || totalSlides === 0) return;
 
-    // Only auto-slide if component is visible to save CPU
+
     let isVisible = true;
     const observer = new IntersectionObserver(
       ([entry]) => {

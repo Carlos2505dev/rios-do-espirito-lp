@@ -51,7 +51,7 @@ const Ministros = () => {
     });
   };
 
-  // Drag handlers
+
   const onTouchStart = (e: React.TouchEvent) => setStartX(e.touches[0].clientX);
   const onTouchEnd = (e: React.TouchEvent) => {
     const endX = e.changedTouches[0].clientX;
@@ -78,7 +78,7 @@ const Ministros = () => {
     <section ref={sectionRef} className="py-20 md:py-28 px-6 bg-rvl-creme-bg overflow-hidden">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-12">
 
-        {/* Texts and Button */}
+
         <div className="flex flex-col w-full md:w-1/2">
           <div
             className="transition-all duration-1000 ease-out"
@@ -98,7 +98,7 @@ const Ministros = () => {
           </div>
         </div>
 
-        {/* Carousel */}
+
         <div className="relative h-[480px] w-full max-w-[400px] mx-auto md:mx-0 custom-carousel-wrapper w-full md:w-1/2">
           <div
             className="relative w-full h-full"
@@ -148,7 +148,7 @@ const Ministros = () => {
             })}
           </div>
 
-          {/* Carousel Controls */}
+
           <button
             onClick={prevCard}
             className="absolute left-[2px] sm:-left-[15px] top-1/2 -translate-y-1/2 z-10 p-0 bg-transparent border-none cursor-pointer hover:scale-110 transition-transform"

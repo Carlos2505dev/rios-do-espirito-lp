@@ -12,7 +12,7 @@ import {
   VideoPlayerVolumeRange,
 } from '@/components/video';
 
-/* ── Countdown Display ─────────────────────────────────────── */
+
 
 const CountdownItem = ({ value, label }: { value: number; label: string }) => (
   <div className="flex flex-col items-center">
@@ -25,13 +25,13 @@ const CountdownItem = ({ value, label }: { value: number; label: string }) => (
   </div>
 );
 
-/** Path to the video asset (served from /public) */
+
 const VIDEO_SOURCE = '/assets/video.mp4';
-/** Poster image shown before video is played */
+
 const VIDEO_POSTER = '/assets/capa_rios2026.webp';
 
 const LineUp = () => {
-  /* ── Countdown State ───────────────────────────────────── */
+
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -41,14 +41,12 @@ const LineUp = () => {
 
   const [hasFinished, setHasFinished] = useState(false);
 
-  /* ── Video State ──────────────────────────────────────── */
+
   const [isPlaying, setIsPlaying] = useState(false);
   const videoContainerRef = useRef<HTMLDivElement>(null);
   const videoElementRef = useRef<HTMLVideoElement | null>(null);
 
-  /**
-   * Handle play/pause button click
-   */
+
   const handlePlayPauseClick = useCallback(() => {
     const videoElement = videoElementRef.current || videoContainerRef.current?.querySelector('video');
     if (videoElement) {
@@ -62,9 +60,7 @@ const LineUp = () => {
     }
   }, []);
 
-  /**
-   * Monitor video playback state for UI updates
-   */
+
   useEffect(() => {
     const container = videoContainerRef.current;
     if (!container) return;
@@ -89,7 +85,7 @@ const LineUp = () => {
     };
   }, []);
 
-  /* ── Video Auto-pause on Scroll (Performance) ──────────── */
+
   useEffect(() => {
     const container = videoContainerRef.current;
     if (!container) return;
@@ -99,7 +95,7 @@ const LineUp = () => {
         const videoElement = container.querySelector('video');
         if (!videoElement) return;
 
-        /* Only auto-pause — never auto-play to respect user intent */
+
         if (!entry.isIntersecting && !videoElement.paused) {
           videoElement.pause();
         }
@@ -114,9 +110,9 @@ const LineUp = () => {
     };
   }, []);
 
-  /* ── Countdown Timer ───────────────────────────────────── */
+
   useEffect(() => {
-    // Set target date: June 18, 2026 at 19:00:00
+
     const targetDate = new Date('2026-06-18T19:00:00').getTime();
     let isVisible = true;
 
@@ -160,7 +156,7 @@ const LineUp = () => {
     };
   }, [hasFinished]);
 
-  /* ── Confetti Celebration ──────────────────────────────── */
+
   const triggerConfetti = useCallback(async () => {
     const { default: confetti } = await import('canvas-confetti');
     const duration = 5 * 1000;
@@ -186,7 +182,7 @@ const LineUp = () => {
     <section className="bg-rvl-creme-bg py-20 md:py-28 px-6">
       <div className="max-w-5xl mx-auto">
 
-        {/* ── Video Player ────────────────────────────────── */}
+
         <div
           ref={videoContainerRef}
           className="w-full aspect-video relative"
@@ -211,7 +207,7 @@ const LineUp = () => {
             </VideoPlayerControlBar>
           </VideoPlayer>
 
-          {/* ── Large Play/Pause Button Overlay ────────────── */}
+
           <button
             onClick={handlePlayPauseClick}
             className={`absolute inset-0 flex items-center justify-center group transition-opacity duration-300 ${
@@ -220,31 +216,31 @@ const LineUp = () => {
             aria-label={isPlaying ? 'Pausar vídeo' : 'Reproduzir vídeo'}
           >
             <div className="relative w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 flex items-center justify-center">
-              {/* Outer Ring with Glow */}
+
               <div className={`absolute inset-0 rounded-full border-2 transition-all duration-300 ${
                 isPlaying
                   ? 'border-white/30 group-hover:border-white/60'
                   : 'border-white/60 group-hover:border-white'
               }`}></div>
 
-              {/* Inner Circle */}
+
               <div className={`absolute inset-2 rounded-full transition-all duration-300 ${
                 isPlaying
                   ? 'bg-white/10 group-hover:bg-white/20'
                   : 'bg-white/20 group-hover:bg-white/30'
               }`}></div>
 
-              {/* Glow Effect */}
+
               <div className={`absolute inset-0 rounded-full blur-xl transition-all duration-300 ${
                 isPlaying
                   ? 'bg-white/0 group-hover:bg-white/10'
                   : 'bg-white/20 group-hover:bg-white/30'
               }`}></div>
 
-              {/* Icon */}
+
               <div className="relative z-10 text-white fill-white">
                 {isPlaying ? (
-                  // Pause Icon
+
                   <svg
                     className="w-8 h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 transition-transform duration-300 group-hover:scale-110"
                     viewBox="0 0 24 24"
@@ -254,7 +250,7 @@ const LineUp = () => {
                     <rect x="14" y="4" width="4" height="16" />
                   </svg>
                 ) : (
-                  // Play Icon
+
                   <svg
                     className="w-8 h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 transition-transform duration-300 group-hover:scale-110"
                     viewBox="0 0 24 24"
@@ -268,12 +264,12 @@ const LineUp = () => {
           </button>
         </div>
 
-        {/* ── Countdown Section ───────────────────────────── */}
+
         <div id="countdown-section" className="mt-16 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden bg-rvl-escuro">
-          {/* Hero Gradient with Opacity */}
+
           <div className="hero-gradient absolute inset-0 opacity-60"></div>
 
-          {/* Noise effect for consistency with Hero */}
+
           <div className="hero-noise absolute inset-0 opacity-10 pointer-events-none"></div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center relative z-10">
@@ -283,7 +279,7 @@ const LineUp = () => {
             <CountdownItem value={timeLeft.seconds} label="SEGS" />
           </div>
 
-          {/* Subtle decoration to match the premium feel */}
+
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full -ml-32 -mb-32 blur-3xl"></div>
         </div>

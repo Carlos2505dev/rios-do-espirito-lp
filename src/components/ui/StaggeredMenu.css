@@ -160,7 +160,7 @@
     pointer-events: auto;
 }
 
-/* sm-panel-close removed in favor of morphing toggle */
+
 
 [data-position='left'] .staggered-menu-panel {
     right: auto;
@@ -328,7 +328,7 @@
     color: var(--sm-accent, #0071E4);
 }
 
-/* Glow Tracking Effect */
+
 .sm-item-glow {
     position: absolute;
     left: 0;
@@ -343,7 +343,7 @@
     mix-blend-mode: screen;
 }
 
-/* Active Link State */
+
 .sm-panel-item[data-active="true"] {
     color: var(--sm-accent, #0071E4);
 }

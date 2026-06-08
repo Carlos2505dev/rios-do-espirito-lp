@@ -24,7 +24,7 @@ const Navbar = () => {
         }
     });
 
-    // Close mobile menu when resizing to desktop
+
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth > 768 && isMenuOpen) {
@@ -52,7 +52,7 @@ const Navbar = () => {
             const element = document.querySelector(href);
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
-                // Update URL without jump
+
                 window.history.pushState(null, '', href);
                 return;
             }
@@ -66,7 +66,7 @@ const Navbar = () => {
 
     return (
         <>
-            {/* Responsive CSS */}
+
             <style>{`
                 .desktop-nav-wrapper { display: flex; }
                 .mobile-nav-wrapper { display: none; }
@@ -94,7 +94,7 @@ const Navbar = () => {
                 }
             `}</style>
 
-            {/* Desktop Navbar */}
+
             <div className="desktop-nav-wrapper">
                 <motion.div
                     variants={{
@@ -109,7 +109,7 @@ const Navbar = () => {
                         className="bg-[#090C13]/60 backdrop-blur-md rounded-full py-3 flex items-center justify-between shadow-lg border border-[#1C2030] transition-all duration-300 ease-in-out w-auto"
                         style={{ maxWidth: '1200px', paddingLeft: '2rem', paddingRight: '2rem' }}
                     >
-                        {/* Logo */}
+
                         <div className="flex items-center shrink-0">
                             <a
                                 href="/"
@@ -129,7 +129,7 @@ const Navbar = () => {
                             </a>
                         </div>
 
-                        {/* Desktop Nav */}
+
                         <nav className="desktop-nav items-center space-x-8 mx-10 shrink-0 flex">
                             {menuItems.map((item) => (
                                 <a
@@ -146,7 +146,7 @@ const Navbar = () => {
                             ))}
                         </nav>
 
-                        {/* Action Button */}
+
                         <div className="flex items-center gap-4 shrink-0">
                             <button
                                 onClick={() => {
@@ -162,7 +162,7 @@ const Navbar = () => {
                 </motion.div>
             </div>
 
-            {/* Mobile Navbar using StaggeredMenu */}
+
             <div className="mobile-nav-wrapper">
                 <motion.div
                     variants={{

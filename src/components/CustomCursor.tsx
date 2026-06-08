@@ -25,7 +25,7 @@ export const CustomCursor = () => {
             mouseXRef.current = e.clientX;
             mouseYRef.current = e.clientY;
 
-            // Check if hovering over interactive elements
+
             const target = e.target as HTMLElement;
             const isHovering = !!target.closest("a, button, [role='button']");
             if (isHovering) {

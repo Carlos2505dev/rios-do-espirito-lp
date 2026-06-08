@@ -2,7 +2,7 @@
 const Hero = () => {
   return (
     <section id="inicio" className="hero-gradient relative h-[100dvh] min-h-[100dvh] overflow-hidden">
-      {/* Background SVG Animation */}
+
       <div className="absolute bottom-[-80px] sm:bottom-[-120px] md:bottom-[-200px] lg:bottom-[-280px] left-0 right-0 flex justify-center pointer-events-none z-0 overflow-visible">
         <svg viewBox="0 0 900 450" className="w-full max-w-[1400px] h-auto transition-all duration-[1500ms]">
           <defs>
@@ -62,7 +62,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Marquee Banner */}
+
       <div className="absolute bottom-0 left-0 right-0 z-20">
         <div className="absolute bottom-0 left-0 right-0 h-[36px] md:h-[44px] bg-white overflow-hidden flex items-center z-20 pointer-events-none text-[#B5440A] font-aeonik font-semibold uppercase text-[11px] md:text-[13px]">
           <div className="flex whitespace-nowrap animate-marquee">

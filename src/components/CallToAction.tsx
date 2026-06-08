@@ -3,7 +3,7 @@ import { Button } from './ui/button';
 import { Calendar, MapPin, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// Lazy load the MapComponent
+
 const MapComponent = lazy(() => import('./MapComponent'));
 
 const CallToAction = () => {
@@ -21,7 +21,7 @@ const CallToAction = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: '200px' } // Load map 200px before it enters view
+      { threshold: 0.1, rootMargin: '200px' }
     );
 
     if (mapSectionRef.current) {
@@ -33,7 +33,7 @@ const CallToAction = () => {
 
   return (
     <>
-      {/* Climax CTA */}
+
       <section className="climax-gradient relative min-h-[70vh] flex flex-col items-center justify-center px-6 py-16 text-center">
         <div className="absolute inset-0 bg-[#021f59]/60 mix-blend-multiply z-[1]"></div>
         <div className="hero-noise absolute inset-0 pointer-events-none z-[1] opacity-30"></div>
@@ -55,7 +55,7 @@ const CallToAction = () => {
       </section>
 
       <section className="bg-rvl-creme-bg text-rvl-escuro py-24 px-6 relative overflow-hidden">
-        {/* Subtle background elements */}
+
         <div className="absolute top-0 right-0 w-64 h-64 bg-rvl-laranja/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-rvl-laranja/5 rounded-full blur-3xl -ml-48 -mb-48"></div>
 

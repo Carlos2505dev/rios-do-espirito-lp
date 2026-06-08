@@ -39,7 +39,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     menuButtonColor = '#fff',
     openMenuButtonColor = '#0071E4',
     changeMenuColorOnOpen = true,
-    accentColor = '#0071E4', // Adjusted to match project theme
+    accentColor = '#0071E4',
     isFixed = false,
     closeOnClickAway = true,
     onMenuOpen,
@@ -66,13 +66,13 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     const busyRef = useRef(false);
     const itemEntranceTweenRef = useRef<gsap.core.Tween | null>(null);
 
-    // Sync current path for active states
+
     useEffect(() => {
         const handleLocationChange = () => {
             setCurrentPath(window.location.pathname);
         };
         window.addEventListener('popstate', handleLocationChange);
-        // Also listen for our custom navigation
+
         const originalPushState = window.history.pushState;
         window.history.pushState = function (...args) {
             originalPushState.apply(this, args);
@@ -83,7 +83,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
     const rafIdRef = useRef<number | null>(null);
 
-    // Cleanup RAF on unmount
+
     useEffect(() => {
         return () => {
             if (rafIdRef.current !== null) {
@@ -95,14 +95,14 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     const handleItemHover = useCallback((e: React.MouseEvent<HTMLElement>) => {
         if (!itemGlowRef.current) return;
         
-        // Cancel any pending RAF to avoid queuing multiple updates
+
         if (rafIdRef.current !== null) {
             cancelAnimationFrame(rafIdRef.current);
         }
 
         const target = e.currentTarget;
         
-        // Use requestAnimationFrame to batch DOM reads and avoid layout thrashing
+
         rafIdRef.current = requestAnimationFrame(() => {
             const rect = target.getBoundingClientRect();
             const panelRect = panelRef.current?.getBoundingClientRect();
@@ -335,7 +335,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     }, [changeMenuColorOnOpen, menuButtonColor, openMenuButtonColor]);
 
     const animateText = useCallback(() => {
-        // Disabled as we now use an icon
+
     }, []);
 
     const toggleMenu = useCallback(() => {

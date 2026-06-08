@@ -398,6 +398,40 @@
   opacity: 1;
 }
 
+/* ===== Feedback Visual de Pressionamento ===== */
+.glowbox.btn-pressed {
+  animation: buttonPress 0.15s ease-out;
+}
+
+.glowbox.btn-pressed .btn-cta {
+  transform: scale(0.95);
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.8),
+    inset 0 0 20px rgba(168, 85, 247, 0.3),
+    inset 0 2px 8px rgba(255, 255, 255, 0.1);
+  background: linear-gradient(271.55deg,
+      rgba(168, 85, 247, 0.7) 5.88%,
+      rgba(147, 51, 234, 0.2) 50.22%,
+      rgba(192, 38, 211, 0.7) 95.32%);
+}
+
+.glowbox.btn-pressed .glowbox-animations,
+.glowbox.btn-pressed .glowbox-borders-masker {
+  opacity: 1;
+}
+
+@keyframes buttonPress {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.97);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* ===== Responsividade ===== */
 @media (max-width: 480px) {
   .btn-cta-box {

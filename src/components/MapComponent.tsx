@@ -3,7 +3,7 @@ import { SiGooglemaps } from 'react-icons/si';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
-// Fix for default marker icon issues in React/Vite
+
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
@@ -16,7 +16,7 @@ L.Icon.Default.mergeOptions({
     shadowUrl: markerShadow,
 });
 
-// Custom Orange Marker Icon
+
 const orangeIcon = L.divIcon({
     html: `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Localização da Igreja Verbo da Vida Cabula">
     <title>Localização da Igreja Verbo da Vida Cabula</title>

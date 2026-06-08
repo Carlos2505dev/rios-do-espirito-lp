@@ -55,7 +55,7 @@ const Programacao = () => {
   return (
     <section id="programacao" className="bg-rvl-creme-bg text-rvl-escuro pt-10 md:pt-14 pb-20 md:pb-28 px-6 overflow-hidden">
       <div className="max-w-5xl mx-auto">
-        {/* Header Section */}
+
         <div className="mb-14 md:mb-20">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-[1px] bg-rvl-laranja"></div>
@@ -68,7 +68,7 @@ const Programacao = () => {
           </h2>
         </div>
 
-        {/* Schedule Content */}
+
         <div className="space-y-16 md:space-y-24">
           {schedule.map((dayData, idx) => (
             <div key={idx} className="flex flex-col md:flex-row gap-8 md:gap-0">

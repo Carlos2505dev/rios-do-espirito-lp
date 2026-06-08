@@ -9,8 +9,8 @@ const FloatingCTA = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Show when scrolling down, hide when scrolling up
-      // Or show after a certain scroll depth
+
+
       if (currentScrollY > lastScrollY && currentScrollY > 300) {
         setIsVisible(true);
       } else if (currentScrollY < lastScrollY || currentScrollY < 300) {
@@ -37,7 +37,7 @@ const FloatingCTA = () => {
 
       <div className="hidden md:flex items-center w-full justify-start pl-1">
         <div className="avatar-group scale-90 origin-left">
-          {/* Placeholder avatars since actual images might be missing */}
+
           <img
             src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80&h=80&fit=crop"
             alt="User"
