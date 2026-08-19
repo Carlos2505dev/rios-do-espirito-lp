@@ -182,6 +182,7 @@ flowchart LR
 ```
 
 <details>
+
 <summary><strong>🏗️ Detalhes da arquitetura</strong></summary>
 
 ### Componentes
@@ -201,18 +202,12 @@ flowchart LR
 
 ### Fluxo de carregamento de uma seção
 
-```mermaid
-sequenceDiagram
-    participant U as Visitante
-    participant R as React Router (Suspense)
-    participant S as Seção (lazy)
-    participant A as Animações GSAP/Framer
-
-    U->>R: Rola até a seção
-    R->>S: Carrega o componente sob demanda
-    S-->>R: Renderiza a seção
-    R->>A: Dispara animações de entrada
-    A-->>U: Experiência visual fluida
+```text
+Visitante -> React Router (Suspense): Rola até a seção
+React Router -> Seção (lazy): Carrega o componente sob demanda
+Seção -> React Router: Renderiza a seção
+React Router -> Animações GSAP/Framer: Dispara animações de entrada
+Animações -> Visitante: Experiência visual fluida
 ```
 
 ### Decisão: Vite + React
